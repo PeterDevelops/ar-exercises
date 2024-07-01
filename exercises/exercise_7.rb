@@ -22,7 +22,23 @@ puts "----------"
 # (http://guides.rubyonrails.org/active_record_validations.html#custom-methods) - **don't** use a `Validator` class)
 
 # 2. Ask the user for a store name (store it in a variable)
+puts "Please enter the name of the store:"
+@store_name = gets.chomp
+puts "You entered: #{@store_name}"
+
+
 # 3. Attempt to create a store with the inputted name but leave out the other fields (annual_revenue, mens_apparel, and
 # womens_apparel)
+store = Store.create(
+  name: @store_name
+)
 # 4. Display the error messages provided back from ActiveRecord to the user (one on each line) after you attempt to save/create
 # the record
+if store.save
+  puts "Saved successfully!"
+else
+  puts "Failed to create store."
+  store.errors.full_messages.each do |msg|
+    puts msg
+  end
+end
