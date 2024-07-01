@@ -9,6 +9,7 @@ Store.create(
   annual_revenue: 300000,
   mens_apparel: true,
   womens_apparel: true
+  
 )
 
 Store.create(
